@@ -1,7 +1,7 @@
 package ru.egslava.edittextphonenumber;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.view.Menu;
@@ -12,7 +12,7 @@ import android.widget.EditText;
 
 import br.com.sapereaude.maskedEditText.MaskedEditText;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

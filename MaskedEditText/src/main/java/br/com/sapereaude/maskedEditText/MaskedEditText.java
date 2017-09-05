@@ -247,6 +247,9 @@ public class MaskedEditText extends AppCompatEditText implements TextWatcher {
 	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count,
 			int after) {
+	    if (this.mask == null || this.mask.isEmpty()) {
+	        return;
+        }
 		if(!editingBefore) {
 			editingBefore = true;
 			if(start > lastValidMaskPosition) {
@@ -275,6 +278,9 @@ public class MaskedEditText extends AppCompatEditText implements TextWatcher {
 
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
+        if (this.mask == null || this.mask.isEmpty()) {
+            return;
+        }
 		if(!editingOnChanged && editingBefore) {
 			editingOnChanged = true;
 			if(ignore) {
@@ -298,6 +304,9 @@ public class MaskedEditText extends AppCompatEditText implements TextWatcher {
 
 	@Override
 	public void afterTextChanged(Editable s) {
+        if (this.mask == null || this.mask.isEmpty()) {
+            return;
+        }
 		if(!editingAfter && editingBefore && editingOnChanged) {
 			editingAfter = true;
             if (hasHint() && (keepHint || rawText.length() == 0)) {
