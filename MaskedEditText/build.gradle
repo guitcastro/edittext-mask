@@ -12,13 +12,12 @@ version = projectVersion
 group = projectGroup
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
-
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 25
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.compileSdkVersion
         versionCode 1
         versionName projectVersion
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -31,8 +30,7 @@ dependencies {
     })
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.2.0'
-
+    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibraryVersion}"
     testCompile 'junit:junit:4.12'
 }
 
@@ -106,8 +104,8 @@ artifacts {
 }
 
 bintray {
-    user = bintrayUser
-    key = bintrayApikey
+    user = project.properties['BINTRAY_USER'] ?: 'test'
+    key = project.properties['BINTRAY_PASSWORD'] ?: 'test'
 
     configurations = ['archives']
     pkg {
