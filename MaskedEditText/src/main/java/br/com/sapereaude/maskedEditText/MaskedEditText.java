@@ -187,7 +187,7 @@ public class MaskedEditText extends AppCompatEditText implements TextWatcher {
 	}
 
 	public String getRawText() {
-		return this.rawText.getText();
+		return this.rawText != null ? this.rawText.getText() : null;
 	}
 
 	public void setCharRepresentation(char charRepresentation) {

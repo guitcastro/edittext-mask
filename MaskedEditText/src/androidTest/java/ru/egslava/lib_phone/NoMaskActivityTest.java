@@ -1,6 +1,7 @@
 package ru.egslava.lib_phone;
 
 
+import android.content.pm.ActivityInfo;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -19,7 +20,11 @@ public class NoMaskActivityTest {
     public ActivityTestRule<TestNoMaskActivity> mActivityTestRule = new ActivityTestRule<>(TestNoMaskActivity.class);
 
     @Test
-    public void textNoException() {
+    public void textNoException() throws InterruptedException {
+        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        Thread.sleep(5000);
+        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        Thread.sleep(2500);
     }
 
 }
