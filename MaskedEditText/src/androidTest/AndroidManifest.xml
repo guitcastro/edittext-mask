@@ -11,6 +11,8 @@
     <application >
         <activity android:name="ru.egslava.lib_phone.TestActivity"
             android:theme="@style/AppTheme"/>
+        <activity android:name="ru.egslava.lib_phone.TestNoMaskActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

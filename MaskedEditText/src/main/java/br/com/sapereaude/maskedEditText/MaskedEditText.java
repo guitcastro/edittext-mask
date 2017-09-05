@@ -121,6 +121,10 @@ public class MaskedEditText extends AppCompatEditText implements TextWatcher {
 	private void cleanUp() {
 		initialized = false;
 
+        if (mask == null || mask.isEmpty()) {
+            return;
+        }
+
 		generatePositionArrays();
 
 		rawText = new RawText();
@@ -204,6 +208,7 @@ public class MaskedEditText extends AppCompatEditText implements TextWatcher {
      *  charsInMask = "+7()- " (and space, yes)
      */
 	private void generatePositionArrays() {
+
 		int[] aux = new int[mask.length()];
 		maskToRaw = new int[mask.length()];
 		String charsInMaskAux = "";
