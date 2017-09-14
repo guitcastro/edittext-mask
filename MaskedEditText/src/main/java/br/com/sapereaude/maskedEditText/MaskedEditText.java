@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.text.TextUtilsCompat;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.SpannableStringBuilder;
@@ -37,7 +36,7 @@ public class MaskedEditText extends AppCompatEditText implements TextWatcher {
 	private int lastValidMaskPosition;
 	private boolean selectionChanged;
 	private OnFocusChangeListener focusChangeListener;
-    private String allowedChars;
+	private String allowedChars;
     private String deniedChars;
 
 
@@ -73,11 +72,10 @@ public class MaskedEditText extends AppCompatEditText implements TextWatcher {
 			@Override
 			public boolean onEditorAction(TextView v, int actionId,KeyEvent event) {
 				switch (actionId) {
-//				case EditorInfo.IME_ACTION_NEXT:
-					// fixing actionNext
-//					return false;
-				default:
+				case KeyEvent.KEYCODE_ENTER:
 					return true;
+				default:
+					return false;
 				}
 			}
 		});
@@ -486,5 +484,13 @@ public class MaskedEditText extends AppCompatEditText implements TextWatcher {
         }
 
 		return string;
+	}
+
+	public String getAllowedChars() {
+		return allowedChars;
+	}
+
+	public void setAllowedChars(String allowedChars) {
+		this.allowedChars = allowedChars;
 	}
 }
